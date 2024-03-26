@@ -19,8 +19,9 @@ export const Income = () => {
 
             <Card.Footer>
               <small className="text-muted">
-                Last updated {Math.floor((new Date() - lastUpdated) / 60000)}{" "}
-                mins ago Last updated 2 mins ago
+                Last updated &nbsp; 
+                {Math.floor((new Date() - IncomeState.lastUp) / 60000)}
+                mins ago
               </small>
             </Card.Footer>
           </Card>
@@ -30,7 +31,11 @@ export const Income = () => {
               <Card.Text>-${IncomeState.expense}</Card.Text>
             </Card.Body>
             <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
+              <small className="text-muted">
+                Last updated &nbsp;
+                {Math.floor((new Date() - IncomeState.lastUp) / 60000)}
+                mins ago
+              </small>
             </Card.Footer>
           </Card>
         </CardGroup>

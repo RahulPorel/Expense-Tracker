@@ -10,7 +10,7 @@ export const FormProvider = (props) => {
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
   const [hideBalToggle, sethideBalToggle] = useState(true);
-  const [lastUp, setLastUp] = useState(null);
+  const [lastUp, setLastUp] = useState(new Date());
 
   const hideBalance = () => {
     sethideBalToggle(!hideBalToggle);
