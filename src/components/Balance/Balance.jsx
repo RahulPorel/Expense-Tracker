@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Card from "react-bootstrap/Card";
 import "./Balance.css";
 
