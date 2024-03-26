@@ -9,6 +9,11 @@ export const FormProvider = (props) => {
   const [balance, setBalance] = useState(0);
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
+  const [hideBalToggle, sethideBalToggle] = useState(true);
+
+  const hideBalance = () => {
+    sethideBalToggle(!hideBalToggle);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,6 +42,9 @@ export const FormProvider = (props) => {
         amt,
         income,
         expense,
+        hideBalToggle,
+        sethideBalToggle,
+        hideBalance,
       }}
     >
       {props.children}

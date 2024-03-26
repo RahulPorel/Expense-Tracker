@@ -6,16 +6,11 @@ import { FormContext } from "../../context/newTrans";
 
 const Balance = () => {
   const BalanceState = useContext(FormContext);
-  const [hideBalToggle, sethideBalToggle] = useState(true);
-
-  const hideBalance = () => {
-    sethideBalToggle(!hideBalToggle);
-  };
 
   return (
     <div className="balance-app">
-      <button onClick={hideBalance}>
-        {!hideBalToggle ? (
+      <button onClick={BalanceState.hideBalance}>
+        {!BalanceState.hideBalToggle ? (
           <i
             className="fa-solid fa-plus"
             style={{
@@ -40,7 +35,7 @@ const Balance = () => {
         )}
       </button>
 
-      {hideBalToggle ? (
+      {BalanceState.hideBalToggle ? (
         <>
           <Card.Body>
             <Card.Title>YOUR BALANCE</Card.Title>
@@ -48,12 +43,10 @@ const Balance = () => {
           </Card.Body>
         </>
       ) : null}
+
       <div className="d-flex justify-content-around"></div>
     </div>
   );
-  // <div>
-  //   <h1>Your Bal is ${BalanceState.balance}</h1>
-  // </div>
 };
 
 export default Balance;

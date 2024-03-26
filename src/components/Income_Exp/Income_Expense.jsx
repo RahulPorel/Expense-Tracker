@@ -6,7 +6,7 @@ import { Card } from "react-bootstrap";
 
 export const Income = () => {
   const IncomeState = useContext(FormContext);
-  console.log(IncomeState.income);
+
   return (
     <CardGroup>
       <Card>
