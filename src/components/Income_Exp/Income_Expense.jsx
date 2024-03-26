@@ -6,29 +6,36 @@ import { Card } from "react-bootstrap";
 
 export const Income = () => {
   const IncomeState = useContext(FormContext);
-
+  console.log(IncomeState.lastUp);
   return (
-    <CardGroup>
-      <Card>
-        <Card.Body>
-          <Card.Title>INCOME</Card.Title>
-          <Card.Text>+${IncomeState.income}</Card.Text>
-        </Card.Body>
+    <>
+      {IncomeState.hideBalToggle ? (
+        <CardGroup>
+          <Card>
+            <Card.Body>
+              <Card.Title>INCOME</Card.Title>
+              <Card.Text>+${IncomeState.income}</Card.Text>
+            </Card.Body>
 
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-      <Card>
-        <Card.Body>
-          <Card.Title>EXPENSE</Card.Title>
-          <Card.Text>-${IncomeState.expense}</Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-    </CardGroup>
+            <Card.Footer>
+              <small className="text-muted">
+                Last updated {Math.floor((new Date() - lastUpdated) / 60000)}{" "}
+                mins ago Last updated 2 mins ago
+              </small>
+            </Card.Footer>
+          </Card>
+          <Card>
+            <Card.Body>
+              <Card.Title>EXPENSE</Card.Title>
+              <Card.Text>-${IncomeState.expense}</Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <small className="text-muted">Last updated 3 mins ago</small>
+            </Card.Footer>
+          </Card>
+        </CardGroup>
+      ) : null}
+    </>
 
     // <div>
     //   <h2>Income: ${IncomeState.income}</h2>

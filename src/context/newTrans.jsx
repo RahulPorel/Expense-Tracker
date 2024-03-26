@@ -10,6 +10,7 @@ export const FormProvider = (props) => {
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
   const [hideBalToggle, sethideBalToggle] = useState(true);
+  const [lastUp, setLastUp] = useState(null);
 
   const hideBalance = () => {
     sethideBalToggle(!hideBalToggle);
@@ -25,6 +26,7 @@ export const FormProvider = (props) => {
     } else {
       setExpense((prevExp) => prevExp + Math.abs(parseInt(amt)));
     }
+    setLastUp(new Date());
     setTrasnName("");
     setAmt("");
   };
@@ -45,6 +47,7 @@ export const FormProvider = (props) => {
         hideBalToggle,
         sethideBalToggle,
         hideBalance,
+        lastUp,
       }}
     >
       {props.children}
