@@ -48,16 +48,12 @@ const Transactions = () => {
         {!hideHistoryToggle ? (
           <ul className="list">
             {FormState.formData.map((data, index) => (
-              <li key={index}>
+              <li key={index} onClick={() => FormState.handleEdit(index)}>
                 {data.transName} - {data.amt}
               </li>
             ))}
           </ul>
-        ) : (
-          <ul className="list">
-            <li>No History</li>
-          </ul>
-        )}
+        ) : null}
       </Card.Body>
 
       <div>
