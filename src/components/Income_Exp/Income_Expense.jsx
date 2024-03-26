@@ -19,7 +19,7 @@ export const Income = () => {
 
             <Card.Footer>
               <small className="text-muted">
-                Last updated &nbsp; 
+                Last updated &nbsp;
                 {Math.floor((new Date() - IncomeState.lastUp) / 60000)}
                 mins ago
               </small>
@@ -41,11 +41,5 @@ export const Income = () => {
         </CardGroup>
       ) : null}
     </>
-
-    // <div>
-    //   <h2>Income: ${IncomeState.income}</h2>
-    //   <h3>Exp: ${IncomeState.expense}</h3>
-    //   {/* <h2>Expense: ${IncomeState.expense.toFixed(2)}</h2> */}
-    // </div>
   );
 };
