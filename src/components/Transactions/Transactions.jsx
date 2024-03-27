@@ -24,6 +24,8 @@ const Transactions = () => {
   const [shuffledPersons, setShuffledPersons] = useState([]);
   const [hideAddTrans, setHideAddTrans] = useState(false);
 
+  console.log(hideAddTrans);
+
   const handleHideHistoryToggle = () => {
     setHideHisToggle(!hideHistoryToggle);
   };
@@ -178,85 +180,116 @@ const Transactions = () => {
       <hr className="hr" />
       <div className="add-new-trans-container">
         <h1>
-          <i className="fa-solid fa-circle-plus"></i> &nbsp; Add new
-          Transactions{" "}
+          <i
+            onClick={handleHideAddTransToggle}
+            className="fa-solid fa-circle-plus"
+          ></i>
+          &nbsp; Add new Transactions
         </h1>
 
         <div>
-          <h5> Random Labels </h5>
+          {!hideAddTrans ? (
+            <>
+              <h5> Random Labels </h5>
+              <div>
+                {shuffledPersons.map((person, index) => (
+                  <Button
+                    variant="outline-dark"
+                    className="modal-btn-container"
+                    key={index}
+                    onClick={() =>
+                      handleSetPerson(
+                        person.transLabel,
+                        person.cost,
+                        person.transName
+                      )
+                    }
+                  >
+                    <span className="select-modal-transName">
+                      {person.transLabel}
+                    </span>
+                  </Button>
+                ))}
+              </div>
 
-          {shuffledPersons.map((person, index) => (
-            <Button
-              variant="outline-dark"
-              className="modal-btn-container"
-              key={index}
-              onClick={() =>
-                handleSetPerson(
-                  person.transLabel,
-                  person.cost,
-                  person.transName
-                )
-              }
-            >
-              <span className="select-modal-transName">
-                {person.transLabel}
-              </span>
-            </Button>
-          ))}
+              <Form className="add-new-form" onSubmit={handleSubmit}>
+                <Row>
+                  <Col>
+                    <Form.Label>Transactions Label</Form.Label>
+                    <Form.Control
+                      placeholder="Label ex: rent, medical"
+                      type="text"
+                      value={FormState.transLabel}
+                      onChange={(e) => FormState.setTransLabel(e.target.value)}
+                    />
+                  </Col>
+
+                  <Col>
+                    <Form.Label>Transactions Name</Form.Label>
+                    <Form.Control
+                      placeholder="Label ex: macbook air"
+                      type="text"
+                      value={FormState.transName}
+                      onChange={(e) => FormState.setTrasnName(e.target.value)}
+                    />
+                  </Col>
+                  <Col>
+                    <Form.Label>Transactions Cost </Form.Label>
+
+                    <Form.Control
+                      placeholder="Cost ex: $100, $200"
+                      type="number"
+                      value={FormState.amt}
+                      onChange={(e) => FormState.setAmt(e.target.value)}
+                    />
+                  </Col>
+                  <Col>
+                    <Form.Label>Date of Purchase </Form.Label>
+
+                    <Form.Control
+                      placeholder="Enter name"
+                      type="date"
+                      value={FormState.date || formattedToday}
+                      onChange={(e) => FormState.setDate(e.target.value)}
+                    />
+                    <Form.Label style={{ fontSize: " 14px" }}>
+                      ( Optional )
+                    </Form.Label>
+                  </Col>
+                </Row>
+
+                <div className="d-grid gap-2 add-btn">
+                  <Button size="lg" type="submit" variant="primary">
+                    {editIndex !== null ? "Update" : "Add"}{" "}
+                    {/* Change button text based on editIndex */}
+                  </Button>
+                </div>
+              </Form>
+            </>
+          ) : (
+            <>
+              {/* TODO: slove this code  
+               desc: boilerplate form for styling issue  */}
+              <Form className="add-new-form" style={{ opacity: "0" }}>
+                <Row>
+                  <Col>
+                    <Form.Control />
+                  </Col>
+
+                  <Col>
+                    <Form.Control />
+                  </Col>
+                  <Col>
+                    <Form.Control />
+                  </Col>
+                  <Col>
+                    <Form.Control />
+                  </Col>
+                </Row>
+              </Form>
+            </>
+          )}
         </div>
-        <Form className="add-new-form" onSubmit={handleSubmit}>
-          <Row>
-            <Col>
-              <Form.Label>Transactions Label</Form.Label>
-              <Form.Control
-                placeholder="Label ex: rent, medical"
-                type="text"
-                value={FormState.transLabel}
-                onChange={(e) => FormState.setTransLabel(e.target.value)}
-              />
-            </Col>
-
-            <Col>
-              <Form.Label>Transactions Name</Form.Label>
-              <Form.Control
-                placeholder="Label ex: macbook air"
-                type="text"
-                value={FormState.transName}
-                onChange={(e) => FormState.setTrasnName(e.target.value)}
-              />
-            </Col>
-            <Col>
-              <Form.Label>Transactions Cost </Form.Label>
-
-              <Form.Control
-                placeholder="Cost ex: $100, $200"
-                type="number"
-                value={FormState.amt}
-                onChange={(e) => FormState.setAmt(e.target.value)}
-              />
-            </Col>
-            <Col>
-              <Form.Label>Date of Purchase </Form.Label>
-
-              <Form.Control
-                placeholder="Enter name"
-                type="date"
-                value={FormState.date || formattedToday}
-                onChange={(e) => FormState.setDate(e.target.value)}
-              />
-              <Form.Label style={{ fontSize: " 14px" }}>
-                ( Optional )
-              </Form.Label>
-            </Col>
-          </Row>
-
-          <div className="d-grid gap-2 add-btn">
-            <Button size="lg" type="submit" variant="primary">
-              {editIndex !== null ? "Update" : "Add"}{" "}
-              {/* Change button text based on editIndex */}
-            </Button>
-          </div>
-        </Form>
       </div>
     </>
   );
