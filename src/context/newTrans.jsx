@@ -6,6 +6,8 @@ export const FormProvider = (props) => {
   const [formData, setFormData] = useState([]);
   const [transName, setTrasnName] = useState("");
   const [amt, setAmt] = useState("");
+  const [date, setDate] = useState("");
+
   const [balance, setBalance] = useState(0);
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
@@ -24,7 +26,7 @@ export const FormProvider = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (transName.trim() === "" || amt.trim() === "") return;
-    setFormData([...formData, { transName, amt }]);
+    setFormData([...formData, { transName, amt, date }]);
     // Update input list with new entry
     setInputList([...inputList, formData]);
 
@@ -38,6 +40,7 @@ export const FormProvider = (props) => {
     setLastUp(new Date());
     setTrasnName("");
     setAmt("");
+    setDate("");
   };
 
   return (
@@ -57,6 +60,8 @@ export const FormProvider = (props) => {
         sethideBalToggle,
         hideBalance,
         lastUp,
+        date,
+        setDate,
         setBalance,
       }}
     >

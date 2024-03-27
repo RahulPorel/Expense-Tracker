@@ -7,6 +7,18 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 
+const today = new Date();
+const yyyy = today.getFullYear();
+let mm = today.getMonth() + 1; // Months start at 0!
+let dd = today.getDate();
+
+if (dd < 10) dd = "0" + dd;
+if (mm < 10) mm = "0" + mm;
+
+const formattedToday = dd + "/" + mm + "/" + yyyy;
+
+console.log(formattedToday);
+
 const Transactions = () => {
   const FormState = useContext(FormContext);
   const [hideHistoryToggle, setHideHisToggle] = useState(false);
@@ -20,6 +32,7 @@ const Transactions = () => {
     setEditIndex(index);
     const editedItem = FormState.formData[index];
     FormState.setTrasnName(editedItem.transName); // Set the name field to the current value being edited
+    FormState.setDate(editedItem.date); // Set the name field to the current value being edited
     FormState.setAmt(editedItem.amt); // Set the amount field to the current value being edited
   };
 
@@ -37,6 +50,7 @@ const Transactions = () => {
       updatedData[editIndex] = {
         transName: FormState.transName,
         amt: FormState.amt,
+        date: FormState.date,
       }; // Update the item at editIndex
       FormState.setFormData(updatedData); // Update context with new array
       setEditIndex(null); // Reset editIndex
@@ -47,6 +61,7 @@ const Transactions = () => {
     // Clear input fields
     FormState.setTrasnName("");
     FormState.setAmt("");
+    FormState.setDate("");
   };
 
   // Function to handle setting person name and roll number to the fields
@@ -104,7 +119,7 @@ const Transactions = () => {
           <ul className="list">
             {FormState.formData.map((data, index) => (
               <li key={index}>
-                {data.transName} - {data.amt}
+                {data.transName} - {data.amt} - {data.date}
                 <button onClick={() => handleEdit(index)}>Edit</button>{" "}
                 {/* Edit button */}
                 <button onClick={() => handleDelete(index)}>Delete</button>{" "}
@@ -122,9 +137,11 @@ const Transactions = () => {
           {persons.map((person, index) => (
             <Button
               key={index}
-              onClick={() => handleSetPerson(person.name, person.rollNo)}
+              onClick={() =>
+                handleSetPerson(person.name, person.rollNo, person.date)
+              }
             >
-              {person.name} - {person.rollNo}
+              {person.name} - {person.rollNo} - {person.date}
             </Button>
           ))}
         </div>
@@ -145,6 +162,14 @@ const Transactions = () => {
                 type="number"
                 value={FormState.amt}
                 onChange={(e) => FormState.setAmt(e.target.value)}
+              />
+            </Col>
+            <Col>
+              <Form.Control
+                placeholder="Enter name"
+                type="date"
+                value={FormState.date}
+                onChange={(e) => FormState.setDate(e.target.value)}
               />
             </Col>
           </Row>
