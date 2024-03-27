@@ -106,9 +106,9 @@ const Transactions = () => {
 
   return (
     <>
-      <hr />
-      <Card.Body className="Trans-hist-container">
-        <h1>Transactions History</h1>
+      <hr className="hr-trans-list-container hr" />
+      <Card.Body className="Trans-list-container">
+        <h1 style={{ fontWeight: "400" }}>Recent Transactions </h1>
         {FormState.formData.length >= 1 ? (
           <ul className="list">
             {FormState.formData.map((data, index) => (
@@ -166,18 +166,17 @@ const Transactions = () => {
           </ul>
         )}
       </Card.Body>
-
       {/* space */}
-      <hr />
+      <hr className="hr" />
       <div className="add-new-trans-container">
         <h1>
           <i className="fa-solid fa-circle-plus"></i> &nbsp; Add new
           Transactions{" "}
         </h1>
-        {hideAddTrans ? console.log("gugy") : ""}
 
         <div>
-          <Form.Label>Random Labels </Form.Label>
+          <h5> Random Labels </h5>
+
           {shuffledPersons.map((person, index) => (
             <Button
               variant="outline-dark"

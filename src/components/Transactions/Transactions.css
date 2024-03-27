@@ -72,7 +72,7 @@
 .select-modal-transName {
 }
 .modal-btn-container {
-  margin: 1rem;
+  margin: 0.35rem;
 }
 .add-btn {
   margin: 1rem;
@@ -86,12 +86,24 @@
   display: block;
   align-items: center;
   align-content: center;
-  margin: 2rem;
+  margin: 2rem 3rem;
 }
 .add-new-form {
   margin: 2rem 17.5rem;
 }
-.Trans-hist-container {
-  margin: 3.5rem 0;
+.Trans-list-container {
+  margin: 1.5rem 0;
   text-align: center;
+}
+
+/* .hr-trans-list-container {
+  margin-top: -100rem;
+} */
+.hr {
+  margin: auto;
+  width: 50%;
+}
+
+.hr-trans-list-container {
+  margin-top: 2.85rem;
 }
