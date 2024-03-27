@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FormContext } from "../../context/newTrans";
 import { Card } from "react-bootstrap";
 import "./Transactions.css";
@@ -21,6 +21,7 @@ const Transactions = () => {
   const FormState = useContext(FormContext);
   const [hideHistoryToggle, setHideHisToggle] = useState(false);
   const [editIndex, setEditIndex] = useState(null); // State to track the index of the item being edited
+  const [shuffledPersons, setShuffledPersons] = useState([]);
 
   const handleHideHistoryToggle = () => {
     setHideHisToggle(!hideHistoryToggle);
@@ -82,6 +83,19 @@ const Transactions = () => {
     { name: "Inheritances", rollNo: "25500" },
     { name: "Utility bills", rollNo: "-100" },
   ];
+
+  useEffect(() => {
+    shuffleArray(persons);
+    setShuffledPersons([...persons]);
+  }, []);
+
+  // Function to shuffle the array
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
 
   return (
     <>
@@ -167,9 +181,10 @@ const Transactions = () => {
 
       <div>
         <h1>Add new Transactions </h1>
+        <Form.Label>Random Labels </Form.Label>
 
         <div>
-          {persons.map((person, index) => (
+          {shuffledPersons.map((person, index) => (
             <Button
               variant="outline-dark"
               className="modal-btn-container"
