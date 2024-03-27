@@ -23,8 +23,13 @@ const Transactions = () => {
   const [editIndex, setEditIndex] = useState(null); // State to track the index of the item being edited
   const [shuffledPersons, setShuffledPersons] = useState([]);
   const [hideAddTrans, setHideAddTrans] = useState(false);
+
   const handleHideHistoryToggle = () => {
     setHideHisToggle(!hideHistoryToggle);
+  };
+
+  const handleHideAddTransToggle = () => {
+    setHideAddTrans(!hideAddTrans);
   };
 
   const handleEdit = (index) => {
@@ -40,6 +45,8 @@ const Transactions = () => {
     updatedData.splice(index, 1); // Remove item from the array
     FormState.setFormData(updatedData); // Update context with new array
   };
+
+  console.log(FormState.formData.length);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -87,7 +94,7 @@ const Transactions = () => {
   useEffect(() => {
     shuffleArray(persons);
     setShuffledPersons([...persons]);
-  }, []);
+  }, [hideAddTrans]);
 
   // Function to shuffle the array
   function shuffleArray(array) {
@@ -129,7 +136,7 @@ const Transactions = () => {
           )}
         </button>
 
-        {!hideHistoryToggle ? (
+        {FormState.formData.length >= 1 ? (
           <ul className="list">
             {FormState.formData.map((data, index) => (
               <li key={index}>
@@ -152,19 +159,6 @@ const Transactions = () => {
                     <span className="date">{data.date || formattedToday}</span>
                   </span>
                 )}
-                {/* <span className="amt">
-                  ${data.amt}
-                  <span className="date">{data.date || formattedToday}</span>
-                </span> */}
-                {/* {BalanceState.balance !== 0 && (
-                <Card.Text
-                  className={
-                    BalanceState.balance < 0 ? "text-red" : "text-green"
-                  }
-                >
-                  ${BalanceState.balance}
-                </Card.Text>
-              )} */}
                 {/* Edit button */}
                 <button
                   className="rm-btn-styling"
@@ -176,7 +170,28 @@ const Transactions = () => {
               </li>
             ))}
           </ul>
-        ) : null}
+        ) : (
+          <ul className="list">
+            <li>
+              <button className="rm-btn-styling">
+                <i className="fa-regular fa-pen-to-square"></i>
+              </button>
+              <span className="trans-name">
+                No Transaction
+                <span className="trans-name-desc">Add new Transaction</span>
+              </span>
+              <span id="amt" className="text-green">
+                $ NULL
+                <span className="date">{formattedToday}</span>
+              </span>
+              {/* Edit button */}
+              <button className="rm-btn-styling">
+                <i className="fa-solid fa-delete-left"></i>
+              </button>
+              {/* Delete button */}
+            </li>
+          </ul>
+        )}
       </Card.Body>
 
       {/* space */}
