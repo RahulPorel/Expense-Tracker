@@ -71,16 +71,16 @@ const Transactions = () => {
 
   // Array of objects containing person names and roll numbers
   const persons = [
-    { name: "John", rollNo: "101" },
-    { name: "Jane", rollNo: "102" },
-    { name: "Doe", rollNo: "103" },
-    { name: "Alice", rollNo: "104" },
-    { name: "Bob", rollNo: "105" },
-    { name: "Eve", rollNo: "106" },
-    { name: "Michael", rollNo: "107" },
-    { name: "Emily", rollNo: "108" },
-    { name: "David", rollNo: "109" },
-    { name: "Sophia", rollNo: "110" },
+    { name: "Housing", rollNo: "1000" },
+    { name: "Transport", rollNo: "350" },
+    { name: "Medical", rollNo: "1200" },
+    { name: "Entertaiment", rollNo: "400" },
+    { name: "Personal", rollNo: "200" },
+    { name: "Miscellaneous", rollNo: "125" },
+    { name: "Special events", rollNo: "1500" },
+    { name: "Travel", rollNo: "1000" },
+    { name: "Trading fees", rollNo: "500" },
+    { name: "Utility bills", rollNo: "100" },
   ];
 
   return (
