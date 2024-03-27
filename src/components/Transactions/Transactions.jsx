@@ -15,9 +15,7 @@ let dd = today.getDate();
 if (dd < 10) dd = "0" + dd;
 if (mm < 10) mm = "0" + mm;
 
-const formattedToday = dd + "/" + mm + "/" + yyyy;
-
-console.log(formattedToday);
+const formattedToday = yyyy + "-" + mm + "-" + dd;
 
 const Transactions = () => {
   const FormState = useContext(FormContext);
@@ -61,13 +59,14 @@ const Transactions = () => {
     // Clear input fields
     FormState.setTrasnName("");
     FormState.setAmt("");
-    FormState.setDate("");
+    FormState.setDate(formattedToday); // Set present date
   };
 
   // Function to handle setting person name and roll number to the fields
   const handleSetPerson = (name, rollNo) => {
     FormState.setTrasnName(name);
     FormState.setAmt(rollNo);
+    FormState.setDate(formattedToday);
   };
 
   // Array of objects containing person names and roll numbers
@@ -119,7 +118,7 @@ const Transactions = () => {
           <ul className="list">
             {FormState.formData.map((data, index) => (
               <li key={index}>
-                {data.transName} - {data.amt} - {data.date}
+                {data.transName} - {data.amt} - {data.date || formattedToday}
                 <button onClick={() => handleEdit(index)}>Edit</button>{" "}
                 {/* Edit button */}
                 <button onClick={() => handleDelete(index)}>Delete</button>{" "}
@@ -137,11 +136,9 @@ const Transactions = () => {
           {persons.map((person, index) => (
             <Button
               key={index}
-              onClick={() =>
-                handleSetPerson(person.name, person.rollNo, person.date)
-              }
+              onClick={() => handleSetPerson(person.name, person.rollNo)}
             >
-              {person.name} - {person.rollNo} - {person.date}
+              {person.name} - {person.rollNo} -
             </Button>
           ))}
         </div>
@@ -168,7 +165,7 @@ const Transactions = () => {
               <Form.Control
                 placeholder="Enter name"
                 type="date"
-                value={FormState.date}
+                value={FormState.date || formattedToday}
                 onChange={(e) => FormState.setDate(e.target.value)}
               />
             </Col>
