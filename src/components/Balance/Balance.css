@@ -1,0 +1,9 @@
+.Bal-container {
+  margin: 2rem 20rem;
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+  font-size: 50px;
+}

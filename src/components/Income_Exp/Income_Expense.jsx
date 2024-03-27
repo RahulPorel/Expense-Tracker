@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { FormContext } from "../../context/newTrans";
+import "./Inc_Exp.css";
 // import { IncomeContext, ExpenseContext } from "../../context/Income_Context";
 import CardGroup from "react-bootstrap/CardGroup";
 import { Card } from "react-bootstrap";
@@ -9,9 +10,9 @@ export const Income = () => {
   return (
     <>
       {IncomeState.hideBalToggle ? (
-        <CardGroup>
+        <CardGroup className="income-exp-container">
           <Card>
-            <Card.Body>
+            <Card.Body className="income-container">
               <Card.Title>INCOME</Card.Title>
               <Card.Text>+${IncomeState.income}</Card.Text>
             </Card.Body>
@@ -24,6 +25,7 @@ export const Income = () => {
               </small>
             </Card.Footer>
           </Card>
+          <div className="gap"></div>
           <Card>
             <Card.Body>
               <Card.Title>EXPENSE</Card.Title>

@@ -114,14 +114,32 @@ const Transactions = () => {
             ></i>
           )}
         </button>
+
         {!hideHistoryToggle ? (
           <ul className="list">
             {FormState.formData.map((data, index) => (
               <li key={index}>
-                {data.transName} - {data.amt} - {data.date || formattedToday}
-                <button onClick={() => handleEdit(index)}>Edit</button>{" "}
+                <button
+                  className="rm-btn-styling"
+                  onClick={() => handleEdit(index)}
+                >
+                  <i className="fa-regular fa-pen-to-square"></i>
+                </button>{" "}
+                <span className="trans-name">
+                  {data.transName}
+                  <span className="trans-name-desc">Housing</span>
+                </span>
+                <span className="amt">
+                  ${data.amt}
+                  <span className="date">{data.date || formattedToday}</span>
+                </span>
                 {/* Edit button */}
-                <button onClick={() => handleDelete(index)}>Delete</button>{" "}
+                <button
+                  className="rm-btn-styling"
+                  onClick={() => handleDelete(index)}
+                >
+                  <i className="fa-solid fa-delete-left"></i>
+                </button>{" "}
                 {/* Delete button */}
               </li>
             ))}
