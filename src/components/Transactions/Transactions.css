@@ -34,9 +34,7 @@
   cursor: pointer;
   outline: inherit;
 }
-.fa-pen-to-square {
-  /* padding-left: 15rem; */
-}
+
 .fa-delete-left {
   color: darkred;
 }
@@ -69,8 +67,7 @@
   display: block;
   font-size: 1rem;
 }
-.select-modal-transName {
-}
+
 .modal-btn-container {
   margin: 0.35rem;
 }
@@ -96,9 +93,6 @@
   text-align: center;
 }
 
-/* .hr-trans-list-container {
-  margin-top: -100rem;
-} */
 .hr {
   margin: auto;
   width: 50%;

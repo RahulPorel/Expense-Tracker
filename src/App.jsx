@@ -10,6 +10,7 @@ function App() {
   return (
     <>
       {/* <Header /> */}
+      <h1 style={{ textAlign: "center" }}>Expense Tracker</h1>
       <FormProvider>
         <Balance />
         <IncomeProvider>
