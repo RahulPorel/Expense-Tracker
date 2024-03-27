@@ -71,16 +71,16 @@ const Transactions = () => {
 
   // Array of objects containing person names and roll numbers
   const persons = [
-    { name: "Housing", rollNo: "1000" },
-    { name: "Transport", rollNo: "350" },
-    { name: "Medical", rollNo: "1200" },
-    { name: "Entertaiment", rollNo: "400" },
-    { name: "Personal", rollNo: "200" },
-    { name: "Miscellaneous", rollNo: "125" },
-    { name: "Special events", rollNo: "1500" },
-    { name: "Travel", rollNo: "1000" },
-    { name: "Trading fees", rollNo: "500" },
-    { name: "Utility bills", rollNo: "100" },
+    { name: "Salary ", rollNo: "2000" },
+    { name: "Transport", rollNo: "-350" },
+    { name: "Medical", rollNo: "-1200" },
+    { name: "Entertaiment ", rollNo: "400" },
+    { name: "Personal", rollNo: "-200" },
+    { name: "Miscellaneous", rollNo: "-125" },
+    { name: "Dividends ", rollNo: "1500" },
+    { name: "Travel", rollNo: "-1000" },
+    { name: "Inheritances", rollNo: "25500" },
+    { name: "Utility bills", rollNo: "-100" },
   ];
 
   return (
@@ -184,6 +184,7 @@ const Transactions = () => {
         <Form onSubmit={handleSubmit}>
           <Row>
             <Col>
+              <Form.Label>Email address</Form.Label>
               <Form.Control
                 placeholder="Enter person name"
                 type="text"
@@ -192,6 +193,8 @@ const Transactions = () => {
               />
             </Col>
             <Col>
+              <Form.Label>Email address</Form.Label>
+
               <Form.Control
                 placeholder="Enter roll number"
                 type="number"
@@ -200,6 +203,8 @@ const Transactions = () => {
               />
             </Col>
             <Col>
+              <Form.Label>Email address</Form.Label>
+
               <Form.Control
                 placeholder="Enter name"
                 type="date"
