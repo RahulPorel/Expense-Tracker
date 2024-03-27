@@ -18,6 +18,7 @@ const Balance = () => {
     BalanceState.setBalance(newBalance);
     setEditMode(false);
   };
+  console.log(BalanceState.balance);
 
   return (
     <div className="balance-app">
@@ -52,14 +53,20 @@ const Balance = () => {
           <Card className="Bal-container">
             <Card.Body className="center">
               <Card.Title>TOTAL BALANCE</Card.Title>
-              <Card.Text>${BalanceState.balance}</Card.Text>
+              {BalanceState.balance !== 0 && (
+                <Card.Text
+                  className={
+                    BalanceState.balance < 0 ? "text-red" : "text-green"
+                  }
+                >
+                  ${BalanceState.balance}
+                </Card.Text>
+              )}
+
+            
             </Card.Body>
           </Card>
-          {/* <Card.Body>
-            <Card.Title>YOUR BALANCE</Card.Title>
-            <h2>${BalanceState.balance}</h2>
-            <button onClick={handleEditBalance}>Edit Balance</button>
-          </Card.Body> */}
+        
         </>
       )}
 

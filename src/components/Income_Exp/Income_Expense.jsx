@@ -19,7 +19,7 @@ export const Income = () => {
                   <i className="fa-solid fa-arrow-up"></i>{" "}
                 </span>
               </Card.Title>
-              <Card.Text className="inc-txt">+${IncomeState.income}</Card.Text>
+              <Card.Text className="inc-txt">+ ${IncomeState.income}</Card.Text>
             </Card.Body>
 
             <Card.Footer>
@@ -39,7 +39,9 @@ export const Income = () => {
                   <i className="fa-solid fa-arrow-down"></i>
                 </span>
               </Card.Title>
-              <Card.Text className="inc-txt">-${IncomeState.expense}</Card.Text>
+              <Card.Text className="inc-txt">
+                - ${IncomeState.expense}
+              </Card.Text>
             </Card.Body>
             <Card.Footer>
               <small className="text-muted">

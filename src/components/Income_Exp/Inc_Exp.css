@@ -21,7 +21,14 @@
 
   border-radius: 100%;
   background: rgb(255, 0, 0, 0.4);
-  /* background: rgb(0, 214, 0, 0.4); */
+
   padding: 5px 8.5px;
   margin-left: 15px;
+}
+.text-red {
+  color: red;
+}
+
+.text-green {
+  color: green;
 }
