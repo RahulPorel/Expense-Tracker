@@ -60,7 +60,7 @@ import { FormContext } from "../../context/newTrans";
 
 const Balance = () => {
   const BalanceState = useContext(FormContext);
-  console.log(BalanceState.balance);
+
   const [editMode, setEditMode] = useState(false);
   const [newBalance, setNewBalance] = useState(BalanceState.balance);
 
