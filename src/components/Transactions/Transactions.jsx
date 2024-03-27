@@ -22,7 +22,7 @@ const Transactions = () => {
   const [hideHistoryToggle, setHideHisToggle] = useState(false);
   const [editIndex, setEditIndex] = useState(null); // State to track the index of the item being edited
   const [shuffledPersons, setShuffledPersons] = useState([]);
-
+  const [hideAddTrans, setHideAddTrans] = useState(false);
   const handleHideHistoryToggle = () => {
     setHideHisToggle(!hideHistoryToggle);
   };
@@ -96,7 +96,7 @@ const Transactions = () => {
       [array[i], array[j]] = [array[j], array[i]];
     }
   }
-
+  console.log(hideAddTrans);
   return (
     <>
       <Card.Body>
@@ -180,10 +180,14 @@ const Transactions = () => {
       </Card.Body>
 
       <div>
-        <h1>Add new Transactions </h1>
-        <Form.Label>Random Labels </Form.Label>
+        <h1>
+          <i className="fa-solid fa-circle-plus"></i> &nbsp; Add new
+          Transactions{" "}
+        </h1>
+        {hideAddTrans ? console.log("gugy") : ""}
 
         <div>
+          <Form.Label>Random Labels </Form.Label>
           {shuffledPersons.map((person, index) => (
             <Button
               variant="outline-dark"
@@ -195,7 +199,6 @@ const Transactions = () => {
             </Button>
           ))}
         </div>
-
         <Form onSubmit={handleSubmit}>
           <Row>
             <Col>
@@ -228,7 +231,7 @@ const Transactions = () => {
               />
             </Col>
           </Row>
-          <br />
+
           <div className="d-grid gap-2 add-btn">
             <Button size="lg" type="submit" variant="primary">
               {editIndex !== null ? "Update" : "Add"}{" "}

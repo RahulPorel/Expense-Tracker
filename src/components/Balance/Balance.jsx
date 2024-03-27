@@ -10,9 +10,9 @@ const Balance = () => {
   const [editMode, setEditMode] = useState(false);
   const [newBalance, setNewBalance] = useState(BalanceState.balance);
 
-  const handleEditBalance = () => {
-    setEditMode(true);
-  };
+  // const handleEditBalance = () => {
+  //   setEditMode(true);
+  // };
 
   const handleUpdateBalance = () => {
     BalanceState.setBalance(newBalance);
@@ -62,11 +62,8 @@ const Balance = () => {
                   ${BalanceState.balance}
                 </Card.Text>
               )}
-
-            
             </Card.Body>
           </Card>
-        
         </>
       )}
 
