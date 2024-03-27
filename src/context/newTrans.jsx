@@ -57,6 +57,7 @@ export const FormProvider = (props) => {
         sethideBalToggle,
         hideBalance,
         lastUp,
+        setBalance,
       }}
     >
       {props.children}
