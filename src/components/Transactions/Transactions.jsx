@@ -431,7 +431,7 @@ const Transactions = () => {
             <Col>
               <Form.Control
                 placeholder="Enter roll number"
-                type="text"
+                type="number"
                 value={FormState.amt}
                 onChange={(e) => FormState.setAmt(e.target.value)}
               />
