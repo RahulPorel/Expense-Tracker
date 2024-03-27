@@ -103,39 +103,11 @@ const Transactions = () => {
       [array[i], array[j]] = [array[j], array[i]];
     }
   }
-  console.log(hideAddTrans);
+
   return (
     <>
       <Card.Body>
-        <Card.Title>
-          <h1>History</h1>
-        </Card.Title>
-        <button onClick={handleHideHistoryToggle}>
-          {hideHistoryToggle ? (
-            <i
-              className="fa-solid fa-plus"
-              style={{
-                display: "inline-flex",
-                fontSize: "25px",
-                background: "black",
-                color: "white ",
-                borderRadius: "5px",
-              }}
-            ></i>
-          ) : (
-            <i
-              className="fa-solid fa-minus"
-              style={{
-                display: "inline-flex",
-                fontSize: "25px",
-                background: "black",
-                color: "white ",
-                borderRadius: "5px",
-              }}
-            ></i>
-          )}
-        </button>
-
+        <h1>Transactions History</h1>
         {FormState.formData.length >= 1 ? (
           <ul className="list">
             {FormState.formData.map((data, index) => (
@@ -219,26 +191,36 @@ const Transactions = () => {
         <Form className="add-new-form" onSubmit={handleSubmit}>
           <Row>
             <Col>
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Transactions Name </Form.Label>
               <Form.Control
-                placeholder="Enter person name"
+                placeholder="Name ex: macbook air"
+                type="text"
+                value={FormState.transName}
+                onChange={(e) => FormState.setTrasnName(e.target.value)}
+              />
+            </Col>
+
+            <Col>
+              <Form.Label>Transactions Label </Form.Label>
+              <Form.Control
+                placeholder="Label ex: rent, medical"
                 type="text"
                 value={FormState.transName}
                 onChange={(e) => FormState.setTrasnName(e.target.value)}
               />
             </Col>
             <Col>
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Transactions Cost </Form.Label>
 
               <Form.Control
-                placeholder="Enter roll number"
+                placeholder="Cost ex: $100, $200"
                 type="number"
                 value={FormState.amt}
                 onChange={(e) => FormState.setAmt(e.target.value)}
               />
             </Col>
             <Col>
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Date of Purchase </Form.Label>
 
               <Form.Control
                 placeholder="Enter name"
@@ -246,6 +228,9 @@ const Transactions = () => {
                 value={FormState.date || formattedToday}
                 onChange={(e) => FormState.setDate(e.target.value)}
               />
+              <Form.Label style={{ fontSize: " 14px" }}>
+                ( Optional )
+              </Form.Label>
             </Col>
           </Row>
 
