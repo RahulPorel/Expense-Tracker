@@ -75,9 +75,19 @@
   margin: 1rem;
 }
 .add-btn {
-  margin-bottom: 10rem;
+  margin: 1rem;
 }
 .fa-circle-plus {
   cursor: pointer;
   font-size: 3rem;
+}
+.add-new-trans-container {
+  text-align: center;
+  display: block;
+  align-items: center;
+  align-content: center;
+  margin: 2rem;
+}
+.add-new-form {
+  margin: 2rem 17.5rem;
 }

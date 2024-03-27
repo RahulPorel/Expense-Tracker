@@ -179,7 +179,9 @@ const Transactions = () => {
         ) : null}
       </Card.Body>
 
-      <div>
+      {/* space */}
+      <hr />
+      <div className="add-new-trans-container">
         <h1>
           <i className="fa-solid fa-circle-plus"></i> &nbsp; Add new
           Transactions{" "}
@@ -199,7 +201,7 @@ const Transactions = () => {
             </Button>
           ))}
         </div>
-        <Form onSubmit={handleSubmit}>
+        <Form className="add-new-form" onSubmit={handleSubmit}>
           <Row>
             <Col>
               <Form.Label>Email address</Form.Label>
