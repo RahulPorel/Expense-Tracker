@@ -33,8 +33,13 @@ export const Income = () => {
           <div className="gap"></div>
           <Card>
             <Card.Body>
-              <Card.Title>EXPENSE</Card.Title>
-              <Card.Text>-${IncomeState.expense}</Card.Text>
+              <Card.Title>
+                EXPENSE
+                <span className="arrow-down">
+                  <i className="fa-solid fa-arrow-down"></i>
+                </span>
+              </Card.Title>
+              <Card.Text className="inc-txt">-${IncomeState.expense}</Card.Text>
             </Card.Body>
             <Card.Footer>
               <small className="text-muted">
