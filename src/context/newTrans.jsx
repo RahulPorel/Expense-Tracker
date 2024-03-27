@@ -11,48 +11,33 @@ export const FormProvider = (props) => {
   const [expense, setExpense] = useState(0);
   const [hideBalToggle, sethideBalToggle] = useState(true);
   const [lastUp, setLastUp] = useState(new Date());
-  const [items, setItems] = useState([]);
+  const [inputList, setInputList] = useState([]);
 
   const hideBalance = () => {
     sethideBalToggle(!hideBalToggle);
   };
 
+  // Function to handle editing an entry
+
+  // Function to handle deleting an entry
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (transName.trim() === "" || amt.trim() === "") return;
     setFormData([...formData, { transName, amt }]);
+    // Update input list with new entry
+    setInputList([...inputList, formData]);
+
     setBalance(balance + parseInt(amt));
     if (amt > 0) {
       setIncome((prevIncome) => prevIncome + parseInt(amt));
     } else {
       setExpense((prevExp) => prevExp + Math.abs(parseInt(amt)));
     }
-    const newItem = {
-      name: formData.name,
-      number: parseFloat(formData.number),
-    };
 
-    setItems([...items, newItem]);
     setLastUp(new Date());
     setTrasnName("");
     setAmt("");
-  };
-
-  const handleEdit = (index) => {
-    const editedItem = items[index];
-    setItems((prevItems) => {
-      const updatedItems = [...prevItems];
-      updatedItems.splice(index, 1);
-      return updatedItems;
-    });
-    setBalance((prevBalance) => prevBalance - editedItem.number);
-    editedItem.number > 0
-      ? setIncome((prevIncome) => prevIncome - editedItem.number)
-      : setExpense((prevExpense) => prevExpense - Math.abs(editedItem.number));
-    setFormData({
-      name: editedItem.name,
-      number: editedItem.number.toString(),
-    });
   };
 
   return (
@@ -72,9 +57,6 @@ export const FormProvider = (props) => {
         sethideBalToggle,
         hideBalance,
         lastUp,
-
-        items,
-        handleEdit,
       }}
     >
       {props.children}

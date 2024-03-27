@@ -1,80 +1,81 @@
 import React, { useState, useEffect } from "react";
 
 function Tp() {
+  // State to hold input values
   const [formData, setFormData] = useState({ name: "", number: "" });
-  const [items, setItems] = useState([]);
+
+  // State to hold list of inputs
+  const [inputList, setInputList] = useState([]);
+
+  // State to hold balance
   const [balance, setBalance] = useState(0);
+
+  // State to hold income and expense
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
+
+  // State to hold last updated time
   const [lastUpdated, setLastUpdated] = useState(new Date());
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
+  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.number) return;
-
-    const newItem = {
-      name: formData.name,
-      number: parseFloat(formData.number),
-    };
-
-    setItems([...items, newItem]);
-    setBalance((prevBalance) => prevBalance + newItem.number);
-    newItem.number > 0
-      ? setIncome((prevIncome) => prevIncome + newItem.number)
-      : setExpense((prevExpense) => prevExpense + Math.abs(newItem.number));
+    // Update input list with new entry
+    setInputList([...inputList, formData]);
+    // Update balance
+    setBalance(balance + parseInt(formData.number));
+    // Update last updated time
+    setLastUpdated(new Date());
+    // Clear form data
     setFormData({ name: "", number: "" });
+  };
+
+  // Function to handle editing an entry
+  const handleEdit = (index, newValue) => {
+    const newList = [...inputList];
+    newList[index].name = newValue;
+    setInputList(newList);
+  };
+
+  // Function to handle deleting an entry
+  const handleDelete = (index) => {
+    const deletedValue = inputList[index].number;
+    setInputList(inputList.filter((item, i) => i !== index));
+    setBalance(balance - parseInt(deletedValue));
     setLastUpdated(new Date());
   };
 
-  const handleEdit = (index) => {
-    const editedItem = items[index];
-    setItems((prevItems) => {
-      const updatedItems = [...prevItems];
-      updatedItems.splice(index, 1);
-      return updatedItems;
-    });
-    setBalance((prevBalance) => prevBalance - editedItem.number);
-    editedItem.number > 0
-      ? setIncome((prevIncome) => prevIncome - editedItem.number)
-      : setExpense((prevExpense) => prevExpense - Math.abs(editedItem.number));
-    setFormData({
-      name: editedItem.name,
-      number: editedItem.number.toString(),
-    });
-  };
-
+  // Function to calculate total income and expense
   useEffect(() => {
-    const interval = setInterval(() => {
-      setLastUpdated(new Date());
-    }, 180000); // Update every 3 minutes
+    let totalIncome = 0;
+    let totalExpense = 0;
 
-    return () => clearInterval(interval);
-  }, []);
+    inputList.forEach((item) => {
+      if (parseInt(item.number) >= 0) {
+        totalIncome += parseInt(item.number);
+      } else {
+        totalExpense += parseInt(item.number);
+      }
+    });
+
+    setIncome(totalIncome);
+    setExpense(totalExpense);
+  }, [inputList]);
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="name"
-          placeholder="Enter name"
+          placeholder="Enter Name"
           value={formData.name}
-          onChange={handleChange}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
         />
         <input
           type="number"
-          name="number"
-          placeholder="Enter number"
+          placeholder="Enter Number"
           value={formData.number}
-          onChange={handleChange}
+          onChange={(e) => setFormData({ ...formData, number: e.target.value })}
         />
         <button type="submit">Submit</button>
       </form>
@@ -91,9 +92,15 @@ function Tp() {
       </div>
 
       <ul>
-        {items.map((item, index) => (
-          <li key={index} onClick={() => handleEdit(index)}>
-            {item.name} - {item.number}
+        {inputList.map((item, index) => (
+          <li
+            key={index}
+            onClick={() =>
+              handleEdit(index, prompt("Edit the value:", item.name))
+            }
+          >
+            {item.name}: {item.number}
+            <button onClick={() => handleDelete(index)}>Delete</button>
           </li>
         ))}
       </ul>
