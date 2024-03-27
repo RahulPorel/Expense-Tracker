@@ -106,7 +106,8 @@ const Transactions = () => {
 
   return (
     <>
-      <Card.Body>
+      <hr />
+      <Card.Body className="Trans-hist-container">
         <h1>Transactions History</h1>
         {FormState.formData.length >= 1 ? (
           <ul className="list">
