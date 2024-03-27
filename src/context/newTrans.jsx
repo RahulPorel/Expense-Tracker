@@ -5,6 +5,8 @@ export const FormContext = createContext(null);
 export const FormProvider = (props) => {
   const [formData, setFormData] = useState([]);
   const [transName, setTrasnName] = useState("");
+  const [transLabel, setTransLabel] = useState("");
+
   const [amt, setAmt] = useState("");
   const [date, setDate] = useState("");
 
@@ -25,8 +27,13 @@ export const FormProvider = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (transName.trim() === "" || amt.trim() === "") return;
-    setFormData([...formData, { transName, amt, date }]);
+    if (
+      transName.trim() === "" ||
+      amt.trim() === "" ||
+      transLabel.trim() === ""
+    )
+      return;
+    setFormData([...formData, { transLabel, transName, amt, date }]);
     // Update input list with new entry
     setInputList([...inputList, formData]);
 
@@ -39,6 +46,8 @@ export const FormProvider = (props) => {
 
     setLastUp(new Date());
     setTrasnName("");
+    setTransLabel("");
+
     setAmt("");
     setDate("");
   };
@@ -49,6 +58,8 @@ export const FormProvider = (props) => {
         formData,
         setFormData,
         transName,
+        transLabel,
+        setTransLabel,
         setTrasnName,
         setAmt,
         handleSubmit,

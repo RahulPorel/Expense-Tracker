@@ -36,7 +36,8 @@ const Transactions = () => {
     setEditIndex(index);
     const editedItem = FormState.formData[index];
     FormState.setTrasnName(editedItem.transName); // Set the name field to the current value being edited
-    FormState.setDate(editedItem.date); // Set the name field to the current value being edited
+    FormState.setTransLabel(editedItem.transLabel); // Set the label field to the current value being edited
+    FormState.setDate(editedItem.date); // Set the date field to the current value being edited
     FormState.setAmt(editedItem.amt); // Set the amount field to the current value being edited
   };
 
@@ -46,8 +47,6 @@ const Transactions = () => {
     FormState.setFormData(updatedData); // Update context with new array
   };
 
-  console.log(FormState.formData.length);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (editIndex !== null) {
@@ -55,6 +54,7 @@ const Transactions = () => {
       const updatedData = [...FormState.formData];
       updatedData[editIndex] = {
         transName: FormState.transName,
+        transLabel: FormState.transLabel,
         amt: FormState.amt,
         date: FormState.date,
       }; // Update the item at editIndex
@@ -66,29 +66,37 @@ const Transactions = () => {
     }
     // Clear input fields
     FormState.setTrasnName("");
+    FormState.setTransLabel("");
+
     FormState.setAmt("");
     FormState.setDate(formattedToday); // Set present date
   };
 
   // Function to handle setting person name and roll number to the fields
-  const handleSetPerson = (name, rollNo) => {
-    FormState.setTrasnName(name);
-    FormState.setAmt(rollNo);
+
+  const handleSetPerson = (transLabel, cost, transName) => {
+    FormState.setTransLabel(transLabel);
+    FormState.setAmt(cost);
+    FormState.setTrasnName(transName);
     FormState.setDate(formattedToday);
   };
 
   // Array of objects containing person names and roll numbers
   const persons = [
-    { name: "Salary ", rollNo: "2000" },
-    { name: "Transport", rollNo: "-350" },
-    { name: "Medical", rollNo: "-1200" },
-    { name: "Entertaiment ", rollNo: "400" },
-    { name: "Personal", rollNo: "-200" },
-    { name: "Miscellaneous", rollNo: "-125" },
-    { name: "Dividends ", rollNo: "1500" },
-    { name: "Travel", rollNo: "-1000" },
-    { name: "Inheritances", rollNo: "25500" },
-    { name: "Utility bills", rollNo: "-100" },
+    { transLabel: "Salary ", transName: "Shivnarayan PVT ", cost: "2000" },
+    { transLabel: "Transport", transName: "Petrol", cost: "-350" },
+    { transLabel: "Medical", transName: "Body Checkup", cost: "-1200" },
+    { transLabel: "Entertaiment ", transName: "Avenger Endgame", cost: "400" },
+    { transLabel: "Personal", transName: "New Honda Civic ", cost: "-200" },
+    { transLabel: "Miscellaneous", transName: "Miscellaneous", cost: "-125" },
+    { transLabel: "Dividends ", transName: "Stocks & Bonds", cost: "1500" },
+    { transLabel: "Travel", transName: "Goa", cost: "-1000" },
+    {
+      transLabel: "Inheritances",
+      transName: "Four Father House ",
+      cost: "25500",
+    },
+    { transLabel: "Utility bills", transName: "Gas, Light", cost: "-100" },
   ];
 
   useEffect(() => {
@@ -121,7 +129,7 @@ const Transactions = () => {
                 </button>
                 <span className="trans-name">
                   {data.transName}
-                  <span className="trans-name-desc">Housing</span>
+                  <span className="trans-name-desc">{data.transLabel}</span>
                 </span>
                 {data.amt !== 0 && (
                   <span
@@ -182,28 +190,36 @@ const Transactions = () => {
               variant="outline-dark"
               className="modal-btn-container"
               key={index}
-              onClick={() => handleSetPerson(person.name, person.rollNo)}
+              onClick={() =>
+                handleSetPerson(
+                  person.transLabel,
+                  person.cost,
+                  person.transName
+                )
+              }
             >
-              <span className="select-modal-transName">{person.name}</span>
+              <span className="select-modal-transName">
+                {person.transLabel}
+              </span>
             </Button>
           ))}
         </div>
         <Form className="add-new-form" onSubmit={handleSubmit}>
           <Row>
             <Col>
-              <Form.Label>Transactions Name </Form.Label>
+              <Form.Label>Transactions Label</Form.Label>
               <Form.Control
-                placeholder="Name ex: macbook air"
+                placeholder="Label ex: rent, medical"
                 type="text"
-                value={FormState.transName}
-                onChange={(e) => FormState.setTrasnName(e.target.value)}
+                value={FormState.transLabel}
+                onChange={(e) => FormState.setTransLabel(e.target.value)}
               />
             </Col>
 
             <Col>
-              <Form.Label>Transactions Label </Form.Label>
+              <Form.Label>Transactions Name</Form.Label>
               <Form.Control
-                placeholder="Label ex: rent, medical"
+                placeholder="Label ex: macbook air"
                 type="text"
                 value={FormState.transName}
                 onChange={(e) => FormState.setTrasnName(e.target.value)}
