@@ -68,3 +68,11 @@
   display: block;
   font-size: 1rem;
 }
+.select-modal-transName {
+}
+.modal-btn-container {
+  margin: 1rem;
+}
+.add-btn {
+  margin-bottom: 10rem;
+}

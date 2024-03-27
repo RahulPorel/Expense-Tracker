@@ -153,10 +153,12 @@ const Transactions = () => {
         <div>
           {persons.map((person, index) => (
             <Button
+              variant="outline-dark"
+              className="modal-btn-container"
               key={index}
               onClick={() => handleSetPerson(person.name, person.rollNo)}
             >
-              {person.name} - {person.rollNo} -
+              <span className="select-modal-transName">{person.name}</span>
             </Button>
           ))}
         </div>
@@ -188,10 +190,13 @@ const Transactions = () => {
               />
             </Col>
           </Row>
-          <Button type="submit" variant="primary">
-            {editIndex !== null ? "Update" : "Add"}{" "}
-            {/* Change button text based on editIndex */}
-          </Button>
+          <br />
+          <div className="d-grid gap-2 add-btn">
+            <Button size="lg" type="submit" variant="primary">
+              {editIndex !== null ? "Update" : "Add"}{" "}
+              {/* Change button text based on editIndex */}
+            </Button>
+          </div>
         </Form>
       </div>
     </>

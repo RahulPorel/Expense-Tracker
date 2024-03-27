@@ -13,8 +13,13 @@ export const Income = () => {
         <CardGroup className="income-exp-container">
           <Card>
             <Card.Body className="income-container">
-              <Card.Title>INCOME</Card.Title>
-              <Card.Text>+${IncomeState.income}</Card.Text>
+              <Card.Title>
+                INCOME
+                <span className="arrow-up">
+                  <i className="fa-solid fa-arrow-up"></i>{" "}
+                </span>
+              </Card.Title>
+              <Card.Text className="inc-txt">+${IncomeState.income}</Card.Text>
             </Card.Body>
 
             <Card.Footer>
