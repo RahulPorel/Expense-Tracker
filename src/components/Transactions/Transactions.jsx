@@ -124,15 +124,33 @@ const Transactions = () => {
                   onClick={() => handleEdit(index)}
                 >
                   <i className="fa-regular fa-pen-to-square"></i>
-                </button>{" "}
+                </button>
                 <span className="trans-name">
                   {data.transName}
                   <span className="trans-name-desc">Housing</span>
                 </span>
-                <span className="amt">
+                {data.amt !== 0 && (
+                  <span
+                    id="amt"
+                    className={data.amt < 0 ? "text-red" : "text-green"}
+                  >
+                    $ {data.amt}
+                    <span className="date">{data.date || formattedToday}</span>
+                  </span>
+                )}
+                {/* <span className="amt">
                   ${data.amt}
                   <span className="date">{data.date || formattedToday}</span>
-                </span>
+                </span> */}
+                {/* {BalanceState.balance !== 0 && (
+                <Card.Text
+                  className={
+                    BalanceState.balance < 0 ? "text-red" : "text-green"
+                  }
+                >
+                  ${BalanceState.balance}
+                </Card.Text>
+              )} */}
                 {/* Edit button */}
                 <button
                   className="rm-btn-styling"

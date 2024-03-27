@@ -43,7 +43,7 @@
 .fa-delete-left:hover {
   color: red;
 }
-.amt {
+#amt {
   align-content: center;
   text-align: center;
   display: block;
@@ -55,6 +55,7 @@
   align-items: center;
   text-align: center;
   align-self: center;
+  color: #000000;
 }
 .trans-name {
   text-align: center;
