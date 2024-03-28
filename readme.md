@@ -6,18 +6,12 @@ Expense Tracker let you track your income and expense and calculate total profit
 
 # Features
 
-- Fully editable & customizable visiting card with features such as
-  Click to add profile photo or logo, Copy Card text to clipboard and Print card as pdf.
-- Copy Btn let copy all your personalized content you add via edit button on single click.
-- More features are in development stage.
-- NOTE: copy btn only copy's your content not load ex or instruction content
-- NOTE: profile photo or logo can be added by simply clicking on circle where images goes not from edit btn.
-- When you click copy btn it will copy your content and it will show like this below ex:  
-  Name: Dave Porel
-  Profession: Bussineman
-  Email-Id: dave121@gmail.com
-  Phone-No: 00-00-000-00
-  Website-Url: www.daveplu.com
+- User can view Total Balance, Income and Expense
+- Last updated tab to show user when last they edited or used this tool to track there expense & income
+- User can view there recent transcation
+- User can add new transcations with filed such as Label, Name of Transcations, Cost and Date of purchase,
+- User cam edit any time edit or delete there transcation
+- Our App give user most used labels for smooth user experience like (travel, medical, salary, transport, entertainment, Utillity bills and many more)
 
 # Live Demo 👁️
 
