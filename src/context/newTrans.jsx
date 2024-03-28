@@ -1,29 +1,18 @@
 import { createContext, useState } from "react";
-
 export const FormContext = createContext(null);
 
 export const FormProvider = (props) => {
   const [formData, setFormData] = useState([]);
   const [transName, setTrasnName] = useState("");
   const [transLabel, setTransLabel] = useState("");
-
   const [amt, setAmt] = useState("");
   const [date, setDate] = useState("");
-
   const [balance, setBalance] = useState(0);
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
   const [hideBalToggle, sethideBalToggle] = useState(true);
   const [lastUp, setLastUp] = useState(new Date());
   const [inputList, setInputList] = useState([]);
-
-  const hideBalance = () => {
-    sethideBalToggle(!hideBalToggle);
-  };
-
-  // Function to handle editing an entry
-
-  // Function to handle deleting an entry
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +25,6 @@ export const FormProvider = (props) => {
     setFormData([...formData, { transLabel, transName, amt, date }]);
     // Update input list with new entry
     setInputList([...inputList, formData]);
-
     setBalance(balance + parseInt(amt));
     if (amt > 0) {
       setIncome((prevIncome) => prevIncome + parseInt(amt));
@@ -47,7 +35,6 @@ export const FormProvider = (props) => {
     setLastUp(new Date());
     setTrasnName("");
     setTransLabel("");
-
     setAmt("");
     setDate("");
   };
@@ -69,7 +56,6 @@ export const FormProvider = (props) => {
         expense,
         hideBalToggle,
         sethideBalToggle,
-        hideBalance,
         lastUp,
         date,
         setDate,

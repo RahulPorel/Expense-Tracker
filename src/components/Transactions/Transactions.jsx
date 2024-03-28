@@ -19,16 +19,9 @@ const formattedToday = yyyy + "-" + mm + "-" + dd;
 
 const Transactions = () => {
   const FormState = useContext(FormContext);
-  const [hideHistoryToggle, setHideHisToggle] = useState(false);
   const [editIndex, setEditIndex] = useState(null); // State to track the index of the item being edited
   const [shuffledPersons, setShuffledPersons] = useState([]);
   const [hideAddTrans, setHideAddTrans] = useState(false);
-
-  console.log(hideAddTrans);
-
-  const handleHideHistoryToggle = () => {
-    setHideHisToggle(!hideHistoryToggle);
-  };
 
   const handleHideAddTransToggle = () => {
     setHideAddTrans(!hideAddTrans);
@@ -51,6 +44,9 @@ const Transactions = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // localStorage.setItem("confirmEmail", signupFormData.confirmEmail);
+    // localStorage.setItem("confirmPassWord", signupFormData.confirmPassword);
     if (editIndex !== null) {
       // If editIndex is not null, it means we are editing an existing item
       const updatedData = [...FormState.formData];
