@@ -197,8 +197,8 @@ const Transactions = () => {
         <div>
           {!hideAddTrans ? (
             <>
-              <h5> Random Labels </h5>
-              <div>
+              <h5 className="hide-modal-for-mobile"> Random Labels </h5>
+              <div className="hide-modal-for-mobile">
                 {shuffledPersons.map((person, index) => (
                   <Button
                     variant="outline-dark"

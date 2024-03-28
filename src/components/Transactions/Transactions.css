@@ -120,3 +120,47 @@
 .hr-trans-list-container {
   margin-top: 2.85rem;
 }
+
+@media screen and (max-width: 480px) {
+  .list li {
+    padding: 10px;
+    margin: 0px 0;
+  }
+  .fa-circle-plus {
+    cursor: pointer;
+    font-size: 2rem;
+  }
+
+  .fa-pen-to-square {
+    transition: all 55ms ease;
+    margin-right: 15px;
+    font-size: 1.35rem;
+  }
+  .trans-name {
+    text-align: center;
+    align-self: center;
+    margin: 0rem;
+    font-size: 1em;
+  }
+  .trans-name-desc {
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    display: block;
+    font-size: 0.75rem;
+  }
+  #amt {
+    padding-right: 0.25rem;
+  }
+  .date {
+    font-size: 12.5px;
+  }
+  .fa-delete-left {
+    font-size: 1.35rem;
+    margin-left: 1rem;
+  }
+
+  .hide-modal-for-mobile {
+    display: none;
+  }
+}
