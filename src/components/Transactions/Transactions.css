@@ -50,7 +50,8 @@
   display: block;
   padding: 0 0 0 8rem;
   font-weight: 590;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 .date {
   font-size: 15px;
@@ -65,7 +66,7 @@
 .trans-name {
   text-align: center;
   align-self: center;
-  margin-right: 12rem;
+  margin-right: 2rem;
   font-size: 1.45em;
 }
 .trans-name-desc {

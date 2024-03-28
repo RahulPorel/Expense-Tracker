@@ -176,10 +176,21 @@ const Transactions = () => {
       <hr className="hr" />
       <div className="add-new-trans-container">
         <h1>
-          <i
-            onClick={handleHideAddTransToggle}
-            className="fa-solid fa-circle-plus"
-          ></i>
+          {!hideAddTrans ? (
+            <button
+              onClick={handleHideAddTransToggle}
+              className="rm-btn-styling"
+            >
+              <i className="fa-solid fa-circle-plus"></i>
+            </button>
+          ) : (
+            <button
+              onClick={handleHideAddTransToggle}
+              className="rm-btn-styling"
+            >
+              <i className="fa-solid fa-circle-minus"></i>
+            </button>
+          )}
           &nbsp; Add new Transactions
         </h1>
 
