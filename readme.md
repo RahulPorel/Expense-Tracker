@@ -13,6 +13,8 @@ Expense Tracker let you track your income and expense and calculate total profit
 - User cam edit any time edit or delete there transcation
 - Our App give user most used labels for smooth user experience like (travel, medical, salary, transport, entertainment, Utillity bills and many more)
 
+This is made using react, js, bootstrap-react and context api.
+
 # Live Demo 👁️
 
 # Snapshot of EXPENSE TRACKER
