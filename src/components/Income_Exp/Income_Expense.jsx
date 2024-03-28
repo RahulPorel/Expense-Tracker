@@ -25,7 +25,7 @@ export const Income = () => {
               <small className="text-muted">
                 Last updated &nbsp;
                 {Math.floor((new Date() - IncomeState.lastUp) / 60000)}
-                mins ago
+                &nbsp; mins ago
               </small>
             </Card.Footer>
           </Card>
@@ -44,7 +44,7 @@ export const Income = () => {
               <small className="text-muted">
                 Last updated &nbsp;
                 {Math.floor((new Date() - IncomeState.lastUp) / 60000)}
-                mins ago
+                &nbsp; mins ago
               </small>
             </Card.Footer>
           </Card>
